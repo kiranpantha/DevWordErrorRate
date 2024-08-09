@@ -5,7 +5,7 @@ setup(
     version="0.0.1",
     description="A Word Error Rate (WER) evaluation Metrics Calculator for Devnagari (Nepali) language.",
     author="Kiran Pantha",
-    author_email="your.email@example.com",
+    author_email="info@kiranpantha.com.np",
     url="https://github.com/kiranpantha/DevWordErrorRate",
     packages=find_packages(),
     classifiers=[
