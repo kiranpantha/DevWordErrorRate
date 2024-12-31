@@ -1,6 +1,5 @@
 import unittest
-from devnagari_wer.normalizer import normalize
-from devnagari_wer.wer import calculate_wer
+from ..devwer.metrics import Metrics
 
 class TestDevnagariWER(unittest.TestCase):
 
@@ -14,3 +13,15 @@ class TestDevnagariWER(unittest.TestCase):
 
 if __name__ == '__main__':
     unittest.main()
+
+
+# from devwer import Metrics
+# metrics = Metrics()
+
+# metrics.wer("संगम","सङ्गम")
+# metrics.wer('यह एक परीक्षण है।', 'यह एक परीक्षण है')
+# metrics.wer("संगम","सङ्गम")
+
+# metrics.wer_legacy('यह एक परीक्षण है।', 'यह एक परीक्षण है')
+
+# metrics.tokenize('यह एक परीक्षण है।')
