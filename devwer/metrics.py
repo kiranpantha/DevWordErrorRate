@@ -15,8 +15,8 @@ class Metrics:
         :return: The CER as a float.
         """
         # Convert texts to character lists (strings are iterable, so no need to tokenize further)
-        ref_chars = self.normalizer.tokenize_nepali_sentence_for_cer(reference)
-        hyp_chars = self.normalizer.tokenize_nepali_sentence_for_cer(hypothesis)
+        ref_chars = self.normalizer.tokenize_for_cer(reference)
+        hyp_chars = self.normalizer.tokenize_for_cer(hypothesis)
 
         # Calculate the edit distance between reference and hypothesis
         edits = lev.distance(''.join(ref_chars), ''.join(hyp_chars))
@@ -32,8 +32,8 @@ class Metrics:
         # Tokenize texts by splitting on spaces
         # ref_tokens = reference.split()
         # hyp_tokens = hypothesis.split()
-        ref_tokens = self.normalizer.tokenize_nepali_sentence_for_wer(reference)
-        hyp_tokens = self.normalizer.tokenize_nepali_sentence_for_wer(hypothesis)
+        ref_tokens = self.normalizer.tokenize_for_wer(reference)
+        hyp_tokens = self.normalizer.tokenize_for_wer(hypothesis)
 
         
         # Use SequenceMatcher to calculate WER
@@ -42,8 +42,8 @@ class Metrics:
         return edits / len(ref_tokens) if len(ref_tokens) > 0 else 0.0
 
     def wer_legacy(self, reference, hypothesis):
-            ref_tokens = self.normalizer.tokenize_nepali_sentence_for_wer(reference)
-            hyp_tokens = self.normalizer.tokenize_nepali_sentence_for_wer(hypothesis)
+            ref_tokens = self.normalizer.tokenize_for_wer(reference)
+            hyp_tokens = self.normalizer.tokenize_for_wer(hypothesis)
             d = np.zeros((len(ref_tokens) + 1, len(hyp_tokens) + 1), dtype=np.uint8)
 
             for i in range(len(ref_tokens) + 1):
@@ -70,8 +70,8 @@ class Metrics:
     
     def tokenize(self,type,sentence):
         if(type == 'wer'):
-            return self.normalizer.tokenize_nepali_sentence_for_wer(sentence)
+            return self.normalizer.tokenize_for_wer(sentence)
         elif(type == 'cer'):
-            return self.normalizer.tokenize_nepali_sentence_for_cer(sentence)
+            return self.normalizer.tokenize_for_cer(sentence)
         else:
             return ['SELECT','CER','OR','WER']
