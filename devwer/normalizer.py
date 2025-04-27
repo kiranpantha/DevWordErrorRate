@@ -1,7 +1,7 @@
 import re
 import unicodedata
 
-class ASRNormalizer:
+class Normalizer:
     def __init__(self):
         self.halant = '्'
         self.vowel_signs = {'ि', 'ी', 'ु', 'ू', 'ृ', 'े', 'ै', 'ो', 'ौ', 'ं'}
